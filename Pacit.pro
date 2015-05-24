@@ -13,9 +13,11 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-    Game.cpp
+    Game.cpp \
+    Player.cpp
 
 HEADERS  += \
-    Game.h
+    Game.h \
+    Player.h
 
 FORMS    +=
