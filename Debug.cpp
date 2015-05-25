@@ -1,12 +1,18 @@
 #include "Debug.h"
+#include "Player.h"
+#include <QFont>
 
-Debug::Debug()
+Debug::Debug(QGraphicsItem *parent)
 {
-
+    setPlainText(QString("Player coordinates: "));
+    setDefaultTextColor(Qt::blue);
+    setFont(QFont("arial",12));
 }
 
-Debug::~Debug()
+void Debug::updatePlayerCoordinates(int x, int y)
 {
-
+    setPlainText(QString("Player coordinates: ") + QString::number(x) + " ," + QString::number(y));
 }
+
+
 

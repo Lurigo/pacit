@@ -1,6 +1,10 @@
 #include "Player.h"
+#include "Debug.h"
+#include "Game.h"
 #include <QKeyEvent>
 #include <QTimer>
+
+extern Game *game;
 
 /* Direction values:
  * -----------------
@@ -29,21 +33,13 @@ Player::Player()
 void Player::keyPressEvent(QKeyEvent *event) // Checks for pressed keys
 {
     if (event->key() == Qt::Key_Up)
-    {
         dir = 1;
-    }
     else if (event->key() == Qt::Key_Right)
-    {
         dir = 2;
-    }
     else if (event->key() == Qt::Key_Down)
-    {
         dir = 3;
-    }
     else if (event->key() == Qt::Key_Left)
-    {
         dir = 4;
-    }
 }
 
 void Player::move()
@@ -51,22 +47,44 @@ void Player::move()
     if (dir == 1) // Up
     {
         if (pos().y() > 0)
+        {
             setPos(x(),y()-5);
+            xpos = pos().x(); // sets x-coordinate for debug overlay
+            ypos = pos().y(); // sets y-coordinate for debug overlay
+        }
     }
     else if (dir == 2) // Right
     {
         if (pos().x() < 750)
+        {
             setPos(x()+5,y());
+            xpos = pos().x();
+            ypos = pos().y();
+        }
     }
     else if (dir == 3) // Down
     {
         if (pos().y() < 550)
+        {
             setPos(x(),y()+5);
+            xpos = pos().x();
+            ypos = pos().y();
+        }
     }
     else if (dir == 4) // Left
     {
         if (pos().x() > 0)
+        {
             setPos(x()-5,y());
+            xpos = pos().x();
+            ypos = pos().y();
+        }
     }
-    else setPos(x(),y());
+    else // Stationary
+    {
+        setPos(x(),y());
+        xpos = pos().x();
+        ypos = pos().y();
+    }
+    game->debug->updatePlayerCoordinates(xpos,ypos); // Sends updated coordinates to debug overlay
 }

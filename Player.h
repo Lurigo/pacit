@@ -9,10 +9,13 @@ class Player: public QObject, public QGraphicsRectItem
 public:
     Player();
     void keyPressEvent(QKeyEvent *event);
+    int getX();
+    int getY();
 private slots:
     void move();
 private:
     int dir;
+    int xpos, ypos;
 };
 
 #endif // PLAYER_H

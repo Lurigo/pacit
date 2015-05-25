@@ -15,5 +15,8 @@ Game::Game(QWidget *parent)
     player = new Player();
     scene->addItem(player);
 
+    debug = new Debug();
+    scene->addItem(debug);
+
     show();
 }
