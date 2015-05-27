@@ -16,12 +16,14 @@ SOURCES += main.cpp\
     Game.cpp \
     Player.cpp \
     Debug.cpp \
-    Bullet.cpp
+    Bullet.cpp \
+    Teleport.cpp
 
 HEADERS  += \
     Game.h \
     Player.h \
     Debug.h \
-    Bullet.h
+    Bullet.h \
+    Teleport.h
 
 FORMS    +=
