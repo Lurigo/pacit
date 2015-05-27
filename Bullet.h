@@ -2,17 +2,21 @@
 #define BULLET_H
 
 #include <QObject>
+#include <QGraphicsItem>
+#include <QGraphicsRectItem>
 
-class Bullet : public QObject
+class Bullet: public QObject, public QGraphicsRectItem
 {
     Q_OBJECT
 public:
-    explicit Bullet(QObject *parent = 0);
-    ~Bullet();
-
-signals:
+    Bullet(QGraphicsItem *parent=0);
 
 public slots:
+    void move();
+
+private:
+    int dir;
+
 };
 
 #endif // BULLET_H

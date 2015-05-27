@@ -15,11 +15,13 @@ TEMPLATE = app
 SOURCES += main.cpp\
     Game.cpp \
     Player.cpp \
-    Debug.cpp
+    Debug.cpp \
+    Bullet.cpp
 
 HEADERS  += \
     Game.h \
     Player.h \
-    Debug.h
+    Debug.h \
+    Bullet.h
 
 FORMS    +=

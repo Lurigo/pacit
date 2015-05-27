@@ -1,6 +1,7 @@
 #include "Player.h"
 #include "Debug.h"
 #include "Game.h"
+#include "Bullet.h"
 #include <QKeyEvent>
 #include <QTimer>
 
@@ -24,7 +25,7 @@ Player::Player()
     setFlag(QGraphicsItem::ItemIsFocusable); // Make player focusable, for key events
     setFocus();
 
-    QTimer *timer = new QTimer(); // Create and set up QTimer for momvement
+    QTimer *timer = new QTimer(); // Create and set up QTimer for movement
     connect(timer,SIGNAL(timeout()),this,SLOT(move()));
 
     timer->start(25); // Set timer interval and start
@@ -40,6 +41,26 @@ void Player::keyPressEvent(QKeyEvent *event) // Checks for pressed keys
         dir = 3;
     else if (event->key() == Qt::Key_Left)
         dir = 4;
+    //else if (event->key() == Qt::Key_F2)
+        //game->scene->addItem(game->debug);
+    else if (event->key() == Qt::Key_Space)
+    {
+        Bullet *bullet = new Bullet();
+        switch (dir)
+        {
+            case 0: bullet->setPos(x()+22,y()+22); break;
+            case 1: bullet->setPos(x()+22,y()-5);  break;
+            case 2: bullet->setPos(x()+50,y()+22); break;
+            case 3: bullet->setPos(x()+22,y()+50); break;
+            case 4: bullet->setPos(x()-5,y()+22);  break;
+        }
+        scene()->addItem(bullet);
+    }
+}
+
+int Player::getDir()
+{
+    return dir;
 }
 
 void Player::move()
@@ -55,7 +76,7 @@ void Player::move()
     }
     else if (dir == 2) // Right
     {
-        if (pos().x() < 750)
+        if (pos().x() < (game->width()-50))
         {
             setPos(x()+5,y());
             xpos = pos().x();
@@ -64,7 +85,7 @@ void Player::move()
     }
     else if (dir == 3) // Down
     {
-        if (pos().y() < 550)
+        if (pos().y() < (game->height()-50))
         {
             setPos(x(),y()+5);
             xpos = pos().x();

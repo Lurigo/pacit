@@ -11,8 +11,11 @@ public:
     void keyPressEvent(QKeyEvent *event);
     int getX();
     int getY();
+    int getDir();
+
 private slots:
     void move();
+
 private:
     int dir;
     int xpos, ypos;
