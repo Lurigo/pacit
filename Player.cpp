@@ -20,15 +20,17 @@ Player::Player()
 {
     dir = 0; // Initialise direction indicator
 
-    setRect(0,0,50,50); // Set player object size
-    setPos(400,300); // Set player start position
+    setRect(0,0,game->PLAYER_SIZE,game->PLAYER_SIZE); // Set player object size
+
+    // Set player start position
+    setPos(((game->WINDOW_WIDTH+game->PLAYER_SIZE)/2),((game->WINDOW_HEIGHT+game->PLAYER_SIZE)/2));
     setFlag(QGraphicsItem::ItemIsFocusable); // Make player focusable, for key events
     setFocus();
 
     QTimer *timer = new QTimer(); // Create and set up QTimer for movement
     connect(timer,SIGNAL(timeout()),this,SLOT(move()));
 
-    timer->start(25); // Set timer interval and start
+    timer->start(30); // Set timer interval and start
 }
 
 void Player::keyPressEvent(QKeyEvent *event) // Checks for pressed keys
@@ -48,11 +50,11 @@ void Player::keyPressEvent(QKeyEvent *event) // Checks for pressed keys
         Bullet *bullet = new Bullet();
         switch (dir)
         {
-            case 0: bullet->setPos(x()+22,y()+22); break;
-            case 1: bullet->setPos(x()+22,y()-5);  break;
-            case 2: bullet->setPos(x()+50,y()+22); break;
-            case 3: bullet->setPos(x()+22,y()+50); break;
-            case 4: bullet->setPos(x()-5,y()+22);  break;
+            case 0: bullet->setPos(x()+14,y()+14); break;
+            case 1: bullet->setPos(x()+14,y()-4);  break;
+            case 2: bullet->setPos(x()+32,y()+14); break;
+            case 3: bullet->setPos(x()+14,y()+32); break;
+            case 4: bullet->setPos(x()-4,y()+14);  break;
         }
         scene()->addItem(bullet);
     }
@@ -69,25 +71,25 @@ void Player::move()
     {
         if (pos().y() > 0)
         {
-            setPos(x(),y()-5);
+            setPos(x(),y()-game->STEP_SIZE);
             xpos = pos().x(); // sets x-coordinate for debug overlay
             ypos = pos().y(); // sets y-coordinate for debug overlay
         }
     }
     else if (dir == 2) // Right
     {
-        if (pos().x() < (game->width()-50))
+        if (pos().x() < (game->WINDOW_WIDTH-game->PLAYER_SIZE))
         {
-            setPos(x()+5,y());
+            setPos(x()+game->STEP_SIZE,y());
             xpos = pos().x();
             ypos = pos().y();
         }
     }
     else if (dir == 3) // Down
     {
-        if (pos().y() < (game->height()-50))
+        if (pos().y() < (game->WINDOW_HEIGHT-game->PLAYER_SIZE))
         {
-            setPos(x(),y()+5);
+            setPos(x(),y()+game->STEP_SIZE);
             xpos = pos().x();
             ypos = pos().y();
         }
@@ -96,7 +98,7 @@ void Player::move()
     {
         if (pos().x() > 0)
         {
-            setPos(x()-5,y());
+            setPos(x()-game->STEP_SIZE,y());
             xpos = pos().x();
             ypos = pos().y();
         }

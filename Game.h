@@ -17,6 +17,13 @@ public:
     Player *player;
     Debug *debug;
 
+    // Game-wide constants
+    static const int WINDOW_WIDTH = 1024;
+    static const int WINDOW_HEIGHT = 768;
+    static const int PLAYER_SIZE = 32;
+    static const int BULLET_SIZE = 4;
+    static const int STEP_SIZE = 4;
+
 };
 
 #endif // GAME_H

@@ -5,12 +5,12 @@ Game::Game(QWidget *parent)
 {
     // create and set up scene
     QGraphicsScene *scene = new QGraphicsScene();
-    scene->setSceneRect(0,0,1024,768);
+    scene->setSceneRect(0,0,WINDOW_WIDTH,WINDOW_HEIGHT);
 
     setScene(scene);
     setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-    setFixedSize(1024,768);
+    setFixedSize(WINDOW_WIDTH,WINDOW_HEIGHT);
 
     // create player
     player = new Player();

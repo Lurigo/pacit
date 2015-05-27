@@ -22,8 +22,8 @@ void Bullet::move()
 {
     if (dir == 1) // Up
     {
-        if (pos().y() > -5)
-            setPos(x(),y()-5);
+        if (pos().y() > -game->BULLET_SIZE)
+            setPos(x(),y()-game->STEP_SIZE);
         else
         {
             scene()->removeItem(this);
@@ -33,8 +33,8 @@ void Bullet::move()
     }
     else if (dir == 2) // Right
     {
-        if (pos().x() < 1024)
-            setPos(x()+5,y());
+        if (pos().x() < game->WINDOW_WIDTH)
+            setPos(x()+game->STEP_SIZE,y());
         else
         {
             scene()->removeItem(this);
@@ -44,8 +44,8 @@ void Bullet::move()
     }
     else if (dir == 3) // Down
     {
-        if (pos().y() < 768)
-            setPos(x(),y()+5);
+        if (pos().y() < game->WINDOW_HEIGHT)
+            setPos(x(),y()+game->STEP_SIZE);
         else
         {
             scene()->removeItem(this);
@@ -55,8 +55,8 @@ void Bullet::move()
     }
     else if (dir == 4) // Left
     {
-        if (pos().x() > -5)
-            setPos(x()-5,y());
+        if (pos().x() > -game->BULLET_SIZE)
+            setPos(x()-game->STEP_SIZE,y());
         else
         {
             scene()->removeItem(this);
