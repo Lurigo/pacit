@@ -20,10 +20,10 @@ Player::Player()
 {
     dir = 0; // Initialise direction indicator
 
-    setRect(0,0,game->PLAYER_SIZE,game->PLAYER_SIZE); // Set player object size
+    setRect(0,0,game->BLOCK_SIZE,game->BLOCK_SIZE); // Set player object size
 
     // Set player start position
-    setPos(((game->WINDOW_WIDTH+game->PLAYER_SIZE)/2),((game->WINDOW_HEIGHT+game->PLAYER_SIZE)/2));
+    setPos((game->WINDOW_WIDTH/2),(game->WINDOW_HEIGHT/2));
     setFlag(QGraphicsItem::ItemIsFocusable); // Make player focusable, for key events
     setFocus();
 
@@ -65,6 +65,11 @@ int Player::getDir()
     return dir;
 }
 
+void Player::updateDir(int d)
+{
+    dir = d;
+}
+
 void Player::move()
 {
     if (dir == 1) // Up
@@ -78,7 +83,7 @@ void Player::move()
     }
     else if (dir == 2) // Right
     {
-        if (pos().x() < (game->WINDOW_WIDTH-game->PLAYER_SIZE))
+        if (pos().x() < (game->WINDOW_WIDTH-game->BLOCK_SIZE))
         {
             setPos(x()+game->STEP_SIZE,y());
             xpos = pos().x();
@@ -87,7 +92,7 @@ void Player::move()
     }
     else if (dir == 3) // Down
     {
-        if (pos().y() < (game->WINDOW_HEIGHT-game->PLAYER_SIZE))
+        if (pos().y() < (game->WINDOW_HEIGHT-game->BLOCK_SIZE))
         {
             setPos(x(),y()+game->STEP_SIZE);
             xpos = pos().x();

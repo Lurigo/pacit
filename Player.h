@@ -12,6 +12,7 @@ public:
     int getX();
     int getY();
     int getDir();
+    void updateDir(int d);
 
 private slots:
     void move();

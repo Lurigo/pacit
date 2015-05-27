@@ -16,6 +16,11 @@ Game::Game(QWidget *parent)
     player = new Player();
     scene->addItem(player);
 
+    // create teleport
+    teleport = new Teleport(256,128,256,512,1);
+    scene->addItem(teleport);
+
+    // create debug overlay
     debug = new Debug();
     scene->addItem(debug);
 
