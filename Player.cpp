@@ -16,14 +16,14 @@ extern Game *game;
  *        v 4
  \ * * * * * * * * */
 
-Player::Player()
+Player::Player(int x, int y)
 {
     dir = 0; // Initialise direction indicator
 
     setRect(0,0,game->BLOCK_SIZE,game->BLOCK_SIZE); // Set player object size
 
     // Set player start position
-    setPos((game->WINDOW_WIDTH/2),(game->WINDOW_HEIGHT/2));
+    setPos((x*game->BLOCK_SIZE),(y*game->BLOCK_SIZE));
     setFlag(QGraphicsItem::ItemIsFocusable); // Make player focusable, for key events
     setFocus();
 

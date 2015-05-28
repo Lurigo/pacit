@@ -11,7 +11,7 @@ extern Game *game;
 Teleport::Teleport(int x, int y, int destx, int desty, int dir, QGraphicsItem *parent)
 {
     setRect(0,0,game->BLOCK_SIZE,game->BLOCK_SIZE);
-    setPos(x,y);
+    setPos(x*game->BLOCK_SIZE,y*game->BLOCK_SIZE);
 
     //set destination coordinates and direction
     destX = destx;
@@ -32,7 +32,7 @@ void Teleport::detect()
     {
         if ((typeid(*(colliding_items[i])) == typeid(Player)))
         {
-            game->player->setPos(destX,destY);
+            game->player->setPos(destX*game->BLOCK_SIZE,destY*game->BLOCK_SIZE);
             game->player->updateDir(Dir);
             return;
         }

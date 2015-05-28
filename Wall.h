@@ -1,12 +1,13 @@
 #ifndef WALL_H
 #define WALL_H
 
+#include <QGraphicsItem>
+#include <QGraphicsRectItem>
 
-class Wall
+class Wall: public QGraphicsRectItem
 {
 public:
-    Wall();
-    ~Wall();
+    Wall(int x, int y, QGraphicsItem *parent=0);
 };
 
 #endif // WALL_H
