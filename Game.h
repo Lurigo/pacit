@@ -20,7 +20,7 @@ public:
 
     // Game-wide constants
     static const int WINDOW_WIDTH = 512;
-    static const int WINDOW_HEIGHT = 386;
+    static const int WINDOW_HEIGHT = 384;
     static const int BLOCK_SIZE = 32;
     static const int BULLET_SIZE = 4;
     static const int BULLET_INTERVAL = 10;
