@@ -20,7 +20,9 @@ Player::Player(int x, int y)
 {
     dir = 0; // Initialise direction indicator
 
-    setRect(0,0,game->BLOCK_SIZE,game->BLOCK_SIZE); // Set player object size
+    // Set player object size and colour
+    setRect(0,0,game->BLOCK_SIZE,game->BLOCK_SIZE);
+    setBrush(* new QBrush(Qt::blue));
 
     // Set player start position
     setPos((x*game->BLOCK_SIZE),(y*game->BLOCK_SIZE));
@@ -30,7 +32,7 @@ Player::Player(int x, int y)
     QTimer *timer = new QTimer(); // Create and set up QTimer for movement
     connect(timer,SIGNAL(timeout()),this,SLOT(move()));
 
-    timer->start(30); // Set timer interval and start
+    timer->start(game->PING); // Set timer interval and start
 }
 
 void Player::keyPressEvent(QKeyEvent *event) // Checks for pressed keys

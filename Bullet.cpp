@@ -8,13 +8,13 @@ extern Game *game; // External object
 
 Bullet::Bullet(QGraphicsItem *parent): QObject(), QGraphicsRectItem(parent)
 {
-    setRect(0,0,5,5);
+    setRect(0,0,game->BULLET_SIZE,game->BULLET_SIZE);
 
     //connect
     QTimer *timer = new QTimer(this);
     connect(timer,SIGNAL(timeout()),this,SLOT(move()));
 
-    timer->start(10);
+    timer->start(game->BULLET_INTERVAL);
     dir = game->player->getDir();
 }
 

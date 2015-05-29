@@ -1,5 +1,4 @@
 #include "Game.h"
-#include "Wall.h"
 #include <QKeyEvent>
 
 Game::Game(QWidget *parent)
@@ -24,7 +23,9 @@ Game::Game(QWidget *parent)
     scene->addItem(teleport2);
 
     // add a wall
-    Wall *wall = new Wall(2,2);
+    //wall = new Wall(2,2);
+    //scene->addItem(wall);
+    Wall *wall = new Wall(16,2);
     scene->addItem(wall);
 
     // create debug overlay
