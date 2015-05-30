@@ -110,7 +110,7 @@ void Player::move()
     else if (dir == 3) // Down
     {
         setPixmap(QPixmap(":/images/player_down.png"));
-        if (game->MAP[curY+1][curX] != 1)
+        if ((game->MAP[curY+1][curX] != 1) && (game->MAP[curY+1][curX] != 5))
         {
             setPos(x(),y()+game->STEP_SIZE*8);
             xpos = pos().x();
