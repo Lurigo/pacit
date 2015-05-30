@@ -32,7 +32,7 @@ Player::Player(int x, int y)
     QTimer *timer = new QTimer();
     connect(timer,SIGNAL(timeout()),this,SLOT(move()));
 
-    timer->start(game->PING); // Set timer interval and start
+    timer->start(game->PING*8); // Set timer interval and start
 }
 
 void Player::keyPressEvent(QKeyEvent *event) // Checks for pressed keys
@@ -74,12 +74,15 @@ void Player::updateDir(int d)
 
 void Player::move()
 {
+    int curX = pos().x()/32;
+    int curY = (pos().y()+32)/32;
+
     if (dir == 1) // Up
     {
         setPixmap(QPixmap(":/images/player_up.png"));
-        if (pos().y() > 0)
+        if (game->MAP[curY-1][curX] != 1)
         {
-            setPos(x(),y()-game->STEP_SIZE);
+            setPos(x(),y()-game->STEP_SIZE*8);
             xpos = pos().x(); // sets x-coordinate for debug overlay
             ypos = pos().y(); // sets y-coordinate for debug overlay
         }
@@ -87,9 +90,9 @@ void Player::move()
     else if (dir == 2) // Right
     {
         setPixmap(QPixmap(":/images/player_right.png"));
-        if (pos().x() < (game->WINDOW_WIDTH-game->BLOCK_SIZE))
+        if (game->MAP[curY][curX+1] != 1)
         {
-            setPos(x()+game->STEP_SIZE,y());
+            setPos(x()+game->STEP_SIZE*8,y());
             xpos = pos().x();
             ypos = pos().y();
         }
@@ -97,9 +100,9 @@ void Player::move()
     else if (dir == 3) // Down
     {
         setPixmap(QPixmap(":/images/player_down.png"));
-        if (pos().y() < (game->WINDOW_HEIGHT-game->BLOCK_SIZE))
+        if (game->MAP[curY+1][curX] != 1)
         {
-            setPos(x(),y()+game->STEP_SIZE);
+            setPos(x(),y()+game->STEP_SIZE*8);
             xpos = pos().x();
             ypos = pos().y();
         }
@@ -107,9 +110,9 @@ void Player::move()
     else if (dir == 4) // Left
     {
         setPixmap(QPixmap(":/images/player_left.png"));
-        if (pos().x() > 0)
+        if (game->MAP[curY][curX-1] != 1)
         {
-            setPos(x()-game->STEP_SIZE,y());
+            setPos(x()-game->STEP_SIZE*8,y());
             xpos = pos().x();
             ypos = pos().y();
         }
