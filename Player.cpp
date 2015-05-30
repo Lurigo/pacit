@@ -22,7 +22,7 @@ Player::Player(int x, int y)
 
     // Set player position and texture
     setPixmap(QPixmap(":/images/player_right.png"));
-    setPos((x*game->BLOCK_SIZE),(y*game->BLOCK_SIZE));
+    setPos((x*game->BLOCK_SIZE),((y-1)*game->BLOCK_SIZE));
 
     // Make player focusable, for key events
     setFlag(QGraphicsItem::ItemIsFocusable);
