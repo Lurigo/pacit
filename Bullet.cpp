@@ -15,7 +15,7 @@ Bullet::Bullet(QGraphicsItem *parent): QObject(), QGraphicsPixmapItem(parent)
     QTimer *timer = new QTimer(this);
     connect(timer,SIGNAL(timeout()),this,SLOT(move()));
 
-    timer->start(game->BULLET_INTERVAL);
+    timer->start(game->BULLET_INTERVAL*8);
 
     // get the player's direction to determine own movement direction
     dir = game->player->getDir();
@@ -23,10 +23,13 @@ Bullet::Bullet(QGraphicsItem *parent): QObject(), QGraphicsPixmapItem(parent)
 
 void Bullet::move()
 {
+    int curX = pos().x()/32;
+    int curY = (pos().y()+32)/32;
+
     if (dir == 1) // Up
     {
-        if (pos().y() > -game->BULLET_SIZE)
-            setPos(x(),y()-game->STEP_SIZE);
+        if (game->MAP[curY-1][curX] != 1)
+            setPos(x(),y()-game->STEP_SIZE*8);
         else
         {
             scene()->removeItem(this);
@@ -36,8 +39,8 @@ void Bullet::move()
     }
     else if (dir == 2) // Right
     {
-        if (pos().x() < game->WINDOW_WIDTH)
-            setPos(x()+game->STEP_SIZE,y());
+        if (game->MAP[curY][curX+1] != 1)
+            setPos(x()+game->STEP_SIZE*8,y());
         else
         {
             scene()->removeItem(this);
@@ -47,8 +50,8 @@ void Bullet::move()
     }
     else if (dir == 3) // Down
     {
-        if (pos().y() < game->WINDOW_HEIGHT)
-            setPos(x(),y()+game->STEP_SIZE);
+        if (game->MAP[curY+1][curX] != 1)
+            setPos(x(),y()+game->STEP_SIZE*8);
         else
         {
             scene()->removeItem(this);
@@ -58,8 +61,8 @@ void Bullet::move()
     }
     else if (dir == 4) // Left
     {
-        if (pos().x() > -game->BULLET_SIZE)
-            setPos(x()-game->STEP_SIZE,y());
+        if (game->MAP[curY][curX-1] != 1)
+            setPos(x()-game->STEP_SIZE*8,y());
         else
         {
             scene()->removeItem(this);
