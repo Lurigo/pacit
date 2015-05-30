@@ -2,9 +2,9 @@
 #define FLOOR_H
 
 #include <QGraphicsItem>
-#include <QGraphicsRectItem>
+#include <QGraphicsPixmapItem>
 
-class Floor: public QGraphicsRectItem
+class Floor: public QGraphicsPixmapItem
 {
 public:
     Floor(int x, int y, QGraphicsItem *parent=0);

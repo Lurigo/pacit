@@ -5,10 +5,9 @@ extern Game *game;
 
 Floor::Floor(int x, int y, QGraphicsItem *parent)
 {
-    // Set floor size, position and colour
-    setRect(0,0,game->BLOCK_SIZE,game->BLOCK_SIZE);
+    // Set floor position and texture
     setPos(x*game->BLOCK_SIZE,y*game->BLOCK_SIZE);
-    setBrush(* new QBrush(Qt::lightGray));
+    setPixmap(QPixmap(":/images/floor.png"));
 }
 
 
