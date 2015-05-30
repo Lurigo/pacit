@@ -2,12 +2,15 @@
 #define ENEMY_H
 
 #include <QObject>
+#include <QGraphicsItem>
+#include <QGraphicsPixmapItem>
 
-class Enemy
-{
+class Enemy: public QObject, public QGraphicsPixmapItem
+{   Q_OBJECT
 public:
-    Enemy();
-    ~Enemy();
+    Enemy(int x, int y, QGraphicsItem *parent=0);
+private slots:
+    void move();
 };
 
 #endif // ENEMY_H
