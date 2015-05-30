@@ -13,6 +13,8 @@ Game::Game(QWidget *parent)
     setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     setFixedSize(WINDOW_WIDTH,WINDOW_HEIGHT);
 
+    setWindowTitle("PACSCII alpha");
+
     // load map
     for (int i = 0; i < 16; i++)
     {
