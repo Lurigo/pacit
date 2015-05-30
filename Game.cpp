@@ -1,6 +1,4 @@
 #include "Game.h"
-#include "Teleport.h"
-#include <QKeyEvent>
 
 Game::Game(QWidget *parent)
 {
@@ -24,6 +22,20 @@ Game::Game(QWidget *parent)
             {
                   Wall *wall = new Wall(i,j-1);
                   scene->addItem(wall);
+            }
+            else if (MAP[j][i] == 2)
+            {
+                Floor *floor = new Floor(i,j-1);
+                scene->addItem(floor);
+                Pickup *pickup = new Pickup(i,j-1);
+                scene->addItem(pickup);
+            }
+            else if (MAP[j][i] == 3)
+            {
+                Floor *floor = new Floor(i,j-1);
+                scene->addItem(floor);
+                Powerup *powerup = new Powerup(i,j-1);
+                scene->addItem(powerup);
             } else {
                 Floor *floor = new Floor(i,j-1);
                 scene->addItem(floor);
@@ -34,6 +46,10 @@ Game::Game(QWidget *parent)
     // create player
     player = new Player(8,7);
     scene->addItem(player);
+
+    // create enemy entities
+    Enemy *enemy1 = new Enemy(7,5);
+    scene->addItem(enemy1);
 
     // create debug overlay
     debug = new Debug();
