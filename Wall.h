@@ -4,7 +4,7 @@
 #include <QGraphicsItem>
 #include <QGraphicsRectItem>
 
-class Wall:public QGraphicsRectItem
+class Wall: public QGraphicsRectItem
 {
 public:
     Wall(int x, int y, QGraphicsItem *parent=0);

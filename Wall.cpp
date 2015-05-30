@@ -1,10 +1,5 @@
 #include "Wall.h"
 #include "Game.h"
-#include "Bullet.h"
-
-#include <typeinfo>
-#include <QList>
-#include <QTimer>
 
 extern Game *game;
 
