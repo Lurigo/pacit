@@ -12,6 +12,7 @@ TARGET = Pacman
 TEMPLATE = app
 RC_FILE = pacscii.rc
 
+CONFIG += c++11
 
 SOURCES += main.cpp\
     Game.cpp \
@@ -21,7 +22,8 @@ SOURCES += main.cpp\
     Teleport.cpp \
     Wall.cpp \
     Floor.cpp \
-    Enemy.cpp
+    Enemy.cpp \
+    Powerup.cpp
 
 HEADERS  += \
     Game.h \
@@ -31,7 +33,8 @@ HEADERS  += \
     Teleport.h \
     Wall.h \
     Floor.h \
-    Enemy.h
+    Enemy.h \
+    Powerup.h
 
 FORMS    +=
 
