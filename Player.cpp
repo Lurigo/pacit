@@ -62,6 +62,16 @@ void Player::keyPressEvent(QKeyEvent *event) // Checks for pressed keys
     }
 }
 
+int Player::getX()
+{
+    return xpos;
+}
+
+int Player::getY()
+{
+    return ypos;
+}
+
 int Player::getDir()
 {
     return dir;
