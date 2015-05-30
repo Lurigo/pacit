@@ -23,7 +23,9 @@ SOURCES += main.cpp\
     Wall.cpp \
     Floor.cpp \
     Enemy.cpp \
-    Powerup.cpp
+    Powerup.cpp \
+    Ammo.cpp \
+    Pickup.cpp
 
 HEADERS  += \
     Game.h \
@@ -34,7 +36,9 @@ HEADERS  += \
     Wall.h \
     Floor.h \
     Enemy.h \
-    Powerup.h
+    Powerup.h \
+    Ammo.h \
+    Pickup.h
 
 FORMS    +=
 

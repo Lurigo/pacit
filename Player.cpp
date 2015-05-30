@@ -2,6 +2,7 @@
 #include "Debug.h"
 #include "Game.h"
 #include "Bullet.h"
+#include "Ammo.h"
 #include <QKeyEvent>
 #include <QTimer>
 
@@ -45,20 +46,22 @@ void Player::keyPressEvent(QKeyEvent *event) // Checks for pressed keys
         dir = 3;
     else if (event->key() == Qt::Key_Left)
         dir = 4;
-    //else if (event->key() == Qt::Key_F2)
-        //game->scene->addItem(game->debug);
     else if (event->key() == Qt::Key_Space)
     {
-        Bullet *bullet = new Bullet();
-        switch (dir)
+        if (game->ammo->getAmmo() != 0)
         {
-            case 0: bullet->setPos(x()+12,y()+12); break;
-            case 1: bullet->setPos(x()+18,y()-8);  break;
-            case 2: bullet->setPos(x()+32,y()+10); break;
-            case 3: bullet->setPos(x()+8,y()+32); break;
-            case 4: bullet->setPos(x(),y()+12);  break;
+            Bullet *bullet = new Bullet();
+            switch (dir)
+            {
+                case 0: bullet->setPos(x()+12,y()+12); break;
+                case 1: bullet->setPos(x()+18,y()-8);  break;
+                case 2: bullet->setPos(x()+32,y()+10); break;
+                case 3: bullet->setPos(x()+8,y()+32); break;
+                case 4: bullet->setPos(x(),y()+12);  break;
+            }
+            scene()->addItem(bullet);
+            game->ammo->decAmmo();
         }
-        scene()->addItem(bullet);
     }
 }
 

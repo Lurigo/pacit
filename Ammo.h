@@ -1,12 +1,19 @@
 #ifndef AMMO_H
 #define AMMO_H
 
+#include <QGraphicsTextItem>
 
-class Ammo
+class Ammo: public QGraphicsTextItem
 {
 public:
-    Ammo();
-    ~Ammo();
+    Ammo(QGraphicsItem *parent=0);
+
+    void incAmmo();
+    void decAmmo();
+    int getAmmo();
+
+private:
+    int ammo;
 };
 
 #endif // AMMO_H

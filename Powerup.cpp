@@ -1,6 +1,7 @@
 #include "Powerup.h"
 #include "Game.h"
 #include "Player.h"
+#include "Ammo.h"
 #include <QTimer>
 
 extern Game *game;
@@ -21,6 +22,7 @@ void Powerup::check()
 {
     if ((game->player->getX() == pos().x()) && (game->player->getY() == pos().y()))
     {
+        game->ammo->incAmmo();
         scene()->removeItem(this);
         delete this;
     }

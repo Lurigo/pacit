@@ -12,6 +12,7 @@
 #include "Enemy.h"
 #include "Powerup.h"
 #include "Pickup.h"
+#include "Ammo.h"
 
 class Game: public QGraphicsView
 {
@@ -21,6 +22,7 @@ public:
     QGraphicsScene *scene;
     Player *player;
     Debug *debug;
+    Ammo *ammo;
 
     // Game-wide constants
     static const int WINDOW_WIDTH = 512;
