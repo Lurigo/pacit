@@ -2,12 +2,15 @@
 #define POWERUP_H
 
 #include <QObject>
+#include <QGraphicsItem>
+#include <QGraphicsPixmapItem>
 
-class Powerup
-{
+class Powerup: public QObject, public QGraphicsPixmapItem
+{     Q_OBJECT
 public:
-    Powerup();
-    ~Powerup();
+    Powerup(int x, int y, QGraphicsItem *parent=0);
+private slots:
+    void check();
 };
 
 #endif // POWERUP_H
