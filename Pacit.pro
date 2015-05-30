@@ -20,7 +20,8 @@ SOURCES += main.cpp\
     Bullet.cpp \
     Teleport.cpp \
     Wall.cpp \
-    Floor.cpp
+    Floor.cpp \
+    Enemy.cpp
 
 HEADERS  += \
     Game.h \
@@ -29,7 +30,8 @@ HEADERS  += \
     Bullet.h \
     Teleport.h \
     Wall.h \
-    Floor.h
+    Floor.h \
+    Enemy.h
 
 FORMS    +=
 
