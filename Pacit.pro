@@ -10,6 +10,7 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = Pacman
 TEMPLATE = app
+RC_FILE = pacscii.rc
 
 
 SOURCES += main.cpp\
