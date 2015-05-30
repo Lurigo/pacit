@@ -47,6 +47,10 @@ Game::Game(QWidget *parent)
     ammo = new Ammo();
     scene->addItem(ammo);
 
+    // create score display
+    score = new Score();
+    scene->addItem(score);
+
     // create player
     player = new Player(8,7);
     scene->addItem(player);
