@@ -22,6 +22,9 @@ Game::Game(QWidget *parent)
             {
                   Wall *wall = new Wall(i,j-1);
                   scene->addItem(wall);
+            } else {
+                Floor *floor = new Floor(i,j-1);
+                scene->addItem(floor);
             }
         }
     }

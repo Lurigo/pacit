@@ -8,6 +8,7 @@
 #include "Player.h"
 #include "Debug.h"
 #include "Wall.h"
+#include "Floor.h"
 
 class Game: public QGraphicsView
 {
