@@ -52,11 +52,11 @@ void Player::keyPressEvent(QKeyEvent *event) // Checks for pressed keys
         Bullet *bullet = new Bullet();
         switch (dir)
         {
-            case 0: bullet->setPos(x()+14,y()+14); break;
-            case 1: bullet->setPos(x()+14,y()-4);  break;
-            case 2: bullet->setPos(x()+32,y()+14); break;
-            case 3: bullet->setPos(x()+14,y()+32); break;
-            case 4: bullet->setPos(x()-4,y()+14);  break;
+            case 0: bullet->setPos(x()+12,y()+12); break;
+            case 1: bullet->setPos(x()+18,y()-8);  break;
+            case 2: bullet->setPos(x()+32,y()+10); break;
+            case 3: bullet->setPos(x()+8,y()+32); break;
+            case 4: bullet->setPos(x(),y()+12);  break;
         }
         scene()->addItem(bullet);
     }
