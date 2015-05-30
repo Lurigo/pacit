@@ -20,16 +20,16 @@ Player::Player(int x, int y)
 {
     dir = 0; // Initialise direction indicator
 
-    // Set player object size and colour
-    setRect(0,0,game->BLOCK_SIZE,game->BLOCK_SIZE);
-    setBrush(* new QBrush(Qt::blue));
-
-    // Set player start position
+    // Set player position and texture
+    setPixmap(QPixmap(":/images/player_right.png"));
     setPos((x*game->BLOCK_SIZE),(y*game->BLOCK_SIZE));
-    setFlag(QGraphicsItem::ItemIsFocusable); // Make player focusable, for key events
+
+    // Make player focusable, for key events
+    setFlag(QGraphicsItem::ItemIsFocusable);
     setFocus();
 
-    QTimer *timer = new QTimer(); // Create and set up QTimer for movement
+    // Create and set up QTimer for movement
+    QTimer *timer = new QTimer();
     connect(timer,SIGNAL(timeout()),this,SLOT(move()));
 
     timer->start(game->PING); // Set timer interval and start
@@ -76,6 +76,7 @@ void Player::move()
 {
     if (dir == 1) // Up
     {
+        setPixmap(QPixmap(":/images/player_up.png"));
         if (pos().y() > 0)
         {
             setPos(x(),y()-game->STEP_SIZE);
@@ -85,6 +86,7 @@ void Player::move()
     }
     else if (dir == 2) // Right
     {
+        setPixmap(QPixmap(":/images/player_right.png"));
         if (pos().x() < (game->WINDOW_WIDTH-game->BLOCK_SIZE))
         {
             setPos(x()+game->STEP_SIZE,y());
@@ -94,6 +96,7 @@ void Player::move()
     }
     else if (dir == 3) // Down
     {
+        setPixmap(QPixmap(":/images/player_down.png"));
         if (pos().y() < (game->WINDOW_HEIGHT-game->BLOCK_SIZE))
         {
             setPos(x(),y()+game->STEP_SIZE);
@@ -103,6 +106,7 @@ void Player::move()
     }
     else if (dir == 4) // Left
     {
+        setPixmap(QPixmap(":/images/player_left.png"));
         if (pos().x() > 0)
         {
             setPos(x()-game->STEP_SIZE,y());
