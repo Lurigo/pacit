@@ -18,7 +18,8 @@ SOURCES += main.cpp\
     Debug.cpp \
     Bullet.cpp \
     Teleport.cpp \
-    Wall.cpp
+    Wall.cpp \
+    Floor.cpp
 
 HEADERS  += \
     Game.h \
@@ -26,7 +27,8 @@ HEADERS  += \
     Debug.h \
     Bullet.h \
     Teleport.h \
-    Wall.h
+    Wall.h \
+    Floor.h
 
 FORMS    +=
 
