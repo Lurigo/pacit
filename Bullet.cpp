@@ -6,15 +6,18 @@
 
 extern Game *game; // External object
 
-Bullet::Bullet(QGraphicsItem *parent): QObject(), QGraphicsRectItem(parent)
+Bullet::Bullet(QGraphicsItem *parent): QObject(), QGraphicsPixmapItem(parent)
 {
-    setRect(0,0,game->BULLET_SIZE,game->BULLET_SIZE);
+    // set bullet texture
+    setPixmap(QPixmap(":/images/bullet.png"));
 
-    //connect
+    // create and connect timer to control movement
     QTimer *timer = new QTimer(this);
     connect(timer,SIGNAL(timeout()),this,SLOT(move()));
 
     timer->start(game->BULLET_INTERVAL);
+
+    // get the player's direction to determine own movement direction
     dir = game->player->getDir();
 }
 

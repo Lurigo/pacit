@@ -3,9 +3,9 @@
 
 #include <QObject>
 #include <QGraphicsItem>
-#include <QGraphicsRectItem>
+#include <QGraphicsPixmapItem>
 
-class Bullet: public QObject, public QGraphicsRectItem
+class Bullet: public QObject, public QGraphicsPixmapItem
 {
     Q_OBJECT
 public:
