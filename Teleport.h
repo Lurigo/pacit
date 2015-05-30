@@ -8,7 +8,7 @@
 class Teleport: public QObject, public QGraphicsRectItem
 {       Q_OBJECT
 public:
-    Teleport(int x, int y, int destx, int desty, int dir, int shift, QGraphicsItem *parent=0);
+    Teleport(int x, int y, int destx, int desty, int dir, QGraphicsItem *parent=0);
 public slots:
     void detect();
 private:

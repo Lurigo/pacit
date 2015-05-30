@@ -29,3 +29,6 @@ HEADERS  += \
     Wall.h
 
 FORMS    +=
+
+RESOURCES += \
+    images.qrc

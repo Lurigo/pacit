@@ -8,17 +8,11 @@
 
 extern Game *game;
 
-Teleport::Teleport(int x, int y, int destx, int desty, int dir, int shift, QGraphicsItem *parent)
+Teleport::Teleport(int x, int y, int destx, int desty, int dir, QGraphicsItem *parent)
 {
     // Set teleporter size, position and colour
     setRect(0,0,game->BLOCK_SIZE,game->BLOCK_SIZE);
-    switch (shift)
-    {
-        case 1: setPos(x*game->BLOCK_SIZE,y*game->BLOCK_SIZE-4); break;
-        case 2: setPos(x*game->BLOCK_SIZE,y*game->BLOCK_SIZE);   break;
-        case 3: setPos(x*game->BLOCK_SIZE,y*game->BLOCK_SIZE+4); break;
-    }
-
+    setPos(x*game->BLOCK_SIZE,y*game->BLOCK_SIZE);
     setBrush(* new QBrush(Qt::green));
 
     // Set destination coordinates and direction
