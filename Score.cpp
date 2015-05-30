@@ -6,15 +6,15 @@ Score::Score(QGraphicsItem *parent)
     score = 0;
 
     // display text
-    setPlainText(QString("Score: ") + QString::number(score));
+    setPlainText(QString::number(score));
     setDefaultTextColor(Qt::gray);
-    setFont(QFont("system",10));
-    setPos(16,48);
+    setFont(QFont("system",24));
+    setPos(2,-2);
 }
 
 void Score::incScore(int n)
 {
-    setPlainText(QString("Ammo: ") + QString::number(score));
     score += n;
+    setPlainText(QString::number(score));
 }
 

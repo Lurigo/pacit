@@ -61,7 +61,7 @@ Game::Game(QWidget *parent)
 
     // create debug overlay
     debug = new Debug();
-    scene->addItem(debug);
+    //scene->addItem(debug);
 
     show();
 }

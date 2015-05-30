@@ -21,7 +21,7 @@ void Pickup::check()
 {
     if ((game->player->getX() == pos().x()) && (game->player->getY() == pos().y()))
     {
-        game->score->incScore(10);
+        game->score->incScore(175);
         scene()->removeItem(this);
         delete this;
     }
