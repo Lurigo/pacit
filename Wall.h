@@ -2,9 +2,9 @@
 #define WALL_H
 
 #include <QGraphicsItem>
-#include <QGraphicsRectItem>
+#include <QGraphicsPixmapItem>
 
-class Wall: public QGraphicsRectItem
+class Wall: public QGraphicsPixmapItem
 {
 public:
     Wall(int x, int y, QGraphicsItem *parent=0);
