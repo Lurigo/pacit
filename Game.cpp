@@ -36,6 +36,11 @@ Game::Game(QWidget *parent)
                 scene->addItem(floor);
                 Powerup *powerup = new Powerup(i,j-1);
                 scene->addItem(powerup);
+            }
+            else if (MAP[j][i] == 4)
+            {
+                Teleport *teleport = new Teleport(i,j-1);
+                scene->addItem(teleport);
             } else {
                 Floor *floor = new Floor(i,j-1);
                 scene->addItem(floor);
@@ -50,6 +55,10 @@ Game::Game(QWidget *parent)
     // create score display
     score = new Score();
     scene->addItem(score);
+
+    // create health display
+    health = new Health();
+    scene->addItem(health);
 
     // create player
     player = new Player(8,7);

@@ -2,45 +2,36 @@
 #include "Game.h"
 #include "Player.h"
 
-#include <typeinfo>
-#include <QList>
 #include <QTimer>
 
 extern Game *game;
 
-Teleport::Teleport(int x, int y, int destx, int desty, int dir, QGraphicsItem *parent)
+Teleport::Teleport(int x, int y, QGraphicsItem *parent)
 {
-    // Set teleporter size, position and colour
+    // Set teleporter size, position
     setRect(0,0,game->BLOCK_SIZE,game->BLOCK_SIZE);
     setPos(x*game->BLOCK_SIZE,y*game->BLOCK_SIZE);
-    setBrush(* new QBrush(Qt::green));
 
     // Set destination coordinates and direction
-    destX = destx;
-    destY = desty;
-    Dir = dir;
+    switch (x)
+    {
+        case 3: destX = 10; destY = 0; break;
+        case 5: destX = 12; destY = 12; break;
+        case 10: destX = 3; destY = 12; break;
+        case 12: destX = 5; destY = 0; break;
+    }
 
     // Connect timer to detector function
     QTimer *timer = new QTimer(this);
     connect(timer,SIGNAL(timeout()),this,SLOT(detect()));
-
-    timer->start(game->PING);
+    timer->start(game->PING*8);
 }
 
 void Teleport::detect()
 {
     // Check if the player is present
-    QList<QGraphicsItem *> colliding_items = collidingItems();
-    for (int i = 0, n = colliding_items.size(); i < n; ++i)
-    {
-        if ((typeid(*(colliding_items[i])) == typeid(Player)))
-        {
-            // Teleports the player to the indicated location
-            game->player->setPos(destX*game->BLOCK_SIZE,destY*game->BLOCK_SIZE);
-            game->player->updateDir(Dir);
-            return;
-        }
-    }
+    if ((game->player->getX() == pos().x()) && (game->player->getY() == pos().y()))
+        game->player->setPos(destX*game->BLOCK_SIZE, destY*game->BLOCK_SIZE);
 }
 
 
