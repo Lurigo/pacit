@@ -12,6 +12,10 @@ Teleport::Teleport(int x, int y, QGraphicsItem *parent)
     setRect(0,0,game->BLOCK_SIZE,game->BLOCK_SIZE);
     setPos(x*game->BLOCK_SIZE,y*game->BLOCK_SIZE);
 
+    // load sound effect
+    tp = new QMediaPlayer;
+    tp->setMedia(QUrl("qrc:/sounds/teleport.wav"));
+
     // Set destination coordinates and direction
     switch (x)
     {
@@ -31,7 +35,10 @@ void Teleport::detect()
 {
     // Check if the player is present
     if ((game->player->getX() == pos().x()) && (game->player->getY() == pos().y()))
+    {
         game->player->setPos(destX*game->BLOCK_SIZE, destY*game->BLOCK_SIZE);
+        tp->play();
+    }
 }
 
 

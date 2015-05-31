@@ -1,2 +1,11 @@
-<RCC/>
-
+<RCC>
+    <qresource prefix="/">
+        <file>sounds/bullet.wav</file>
+        <file>sounds/death.wav</file>
+        <file>sounds/pickup.wav</file>
+        <file>sounds/powerup.wav</file>
+        <file>sounds/teleport.wav</file>
+        <file>sounds/walk.wav</file>
+        <file>sounds/stuck.wav</file>
+    </qresource>
+</RCC>

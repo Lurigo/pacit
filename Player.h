@@ -2,6 +2,7 @@
 #define PLAYER_H
 
 #include <QObject>
+#include <QMediaPlayer>
 #include <QGraphicsPixmapItem>
 
 class Player: public QObject, public QGraphicsPixmapItem
@@ -20,6 +21,11 @@ private slots:
 private:
     int dir;
     int xpos, ypos;
+    QMediaPlayer *bulletsound;
+    QMediaPlayer *walking;
+    QMediaPlayer *stuck;
+    void playWalk();
+    void playStuck();
 };
 
 #endif // PLAYER_H

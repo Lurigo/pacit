@@ -4,6 +4,7 @@
 #include <QObject>
 #include <QGraphicsItem>
 #include <QGraphicsRectItem>
+#include <QMediaPlayer>
 
 class Teleport: public QObject, public QGraphicsRectItem
 {       Q_OBJECT
@@ -14,6 +15,7 @@ public slots:
 private:
     int destX;
     int destY;
+    QMediaPlayer *tp;
 };
 
 #endif // TELEPORT_H
