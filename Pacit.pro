@@ -28,7 +28,8 @@ SOURCES += main.cpp\
     Ammo.cpp \
     Pickup.cpp \
     Score.cpp \
-    Health.cpp
+    Health.cpp \
+    Barrier.cpp
 
 HEADERS  += \
     Game.h \
@@ -43,7 +44,8 @@ HEADERS  += \
     Ammo.h \
     Pickup.h \
     Score.h \
-    Health.h
+    Health.h \
+    Barrier.h
 
 FORMS    +=
 
