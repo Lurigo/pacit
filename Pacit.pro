@@ -11,6 +11,7 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 TARGET = Pacman
 TEMPLATE = app
 RC_FILE = pacscii.rc
+QMAKE_CXXFLAGS_WARN_OFF -= -Wunused-parameter
 
 CONFIG += c++11
 
@@ -26,7 +27,8 @@ SOURCES += main.cpp\
     Powerup.cpp \
     Ammo.cpp \
     Pickup.cpp \
-    Score.cpp
+    Score.cpp \
+    Health.cpp
 
 HEADERS  += \
     Game.h \
@@ -40,7 +42,8 @@ HEADERS  += \
     Powerup.h \
     Ammo.h \
     Pickup.h \
-    Score.h
+    Score.h \
+    Health.h
 
 FORMS    +=
 
