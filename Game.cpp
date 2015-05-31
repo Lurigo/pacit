@@ -41,6 +41,13 @@ Game::Game(QWidget *parent)
             {
                 Teleport *teleport = new Teleport(i,j-1);
                 scene->addItem(teleport);
+            }
+            else if (MAP[j][i] == 5)
+            {
+                Floor *floor = new Floor(i,j-1);
+                scene->addItem(floor);
+                Barrier *barrier = new Barrier(i,j-1);
+                scene->addItem(barrier);
             } else {
                 Floor *floor = new Floor(i,j-1);
                 scene->addItem(floor);

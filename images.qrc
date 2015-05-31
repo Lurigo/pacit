@@ -10,5 +10,6 @@
         <file>images/player_up.png</file>
         <file>images/powerup.png</file>
         <file>images/wall.png</file>
+        <file>images/barrier.png</file>
     </qresource>
 </RCC>

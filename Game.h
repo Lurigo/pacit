@@ -16,6 +16,7 @@
 #include "Score.h"
 #include "Health.h"
 #include "Teleport.h"
+#include "Barrier.h"
 
 class Game: public QGraphicsView
 {
