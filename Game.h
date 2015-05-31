@@ -38,8 +38,10 @@ public:
     static const int BULLET_INTERVAL = 10;
     static const int STEP_SIZE = 4;
     static const int PING = 30;
+    static const int MAPX = 16;
+    static const int MAPY = 14;
 
-    int MAP[14][16] = {
+    int MAP[MAPY][MAPX] = {
         {1,1,1,1,1,4,1,1,1,1,4,1,1,1,1,1,},
         {0,0,0,0,1,0,1,1,1,1,0,1,1,1,1,1,},
         {1,1,1,1,2,2,1,1,1,1,2,2,1,1,1,1,},
