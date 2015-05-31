@@ -2,7 +2,6 @@
 #include "Player.h"
 #include "Game.h"
 #include <QTimer>
-#include <QDebug>
 
 extern Game *game; // External object
 
@@ -34,7 +33,6 @@ void Bullet::move()
         {
             scene()->removeItem(this);
             delete this;
-            qDebug() << "Bullet deleted";
         }
     }
     else if (dir == 2) // Right
@@ -45,7 +43,6 @@ void Bullet::move()
         {
             scene()->removeItem(this);
             delete this;
-            qDebug() << "Bullet deleted";
         }
     }
     else if (dir == 3) // Down
@@ -56,7 +53,6 @@ void Bullet::move()
         {
             scene()->removeItem(this);
             delete this;
-            qDebug() << "Bullet deleted";
         }
     }
     else if (dir == 4) // Left
@@ -67,7 +63,6 @@ void Bullet::move()
         {
             scene()->removeItem(this);
             delete this;
-            qDebug() << "Bullet deleted";
         }
     }
 }
