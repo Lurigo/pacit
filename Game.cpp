@@ -89,6 +89,8 @@ Game::Game(QWidget *parent)
     scene->addItem(enemy1);
     Enemy *enemy2 = new Enemy(18,12);
     scene->addItem(enemy2);
+    Enemy *enemy3 = new Enemy(17,12);
+    scene->addItem(enemy3);
 
     // create debug overlay
     debug = new Debug();

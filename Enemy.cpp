@@ -18,7 +18,7 @@ Enemy::Enemy(int x, int y, QGraphicsItem *parent)
     QTimer *timer = new QTimer();
     connect(timer,SIGNAL(timeout()),this,SLOT(move()));
 
-    timer->start(game->PING*16); // Set timer interval and start
+    timer->start(game->PING*10); // Set timer interval and start
 }
 
 void Enemy::move()
@@ -30,24 +30,35 @@ void Enemy::move()
     {
         if (game->MAP[curY][curX+1] != 1)
             setPos(x()+game->BLOCK_SIZE,y());
+        else if (game->MAP[curY][curX-1] != 1)
+            setPos(x()-game->BLOCK_SIZE,y());
     }
     else if (getPY() > curY)
     {
         if (game->MAP[curY+1][curX] != 1)
             setPos(x(),y()+game->BLOCK_SIZE);
+        else if (game->MAP[curY-1][curX] != 1)
+            setPos(x(),y()-game->BLOCK_SIZE);
+        else if (game->MAP[curY][curX+1] != 1)
+            setPos(x()+game->BLOCK_SIZE,y());
     }
-    else {
+    else
+    {
         if (getPX() < curX)
         {
             if (game->MAP[curY][curX-1] != 1)
                 setPos(x()-game->BLOCK_SIZE,y());
-            else setPos(x()+game->BLOCK_SIZE,y());
+            else if (game->MAP[curY][curX+1] != 1)
+                setPos(x()+game->BLOCK_SIZE,y());
+            else if (game->MAP[curY+1][curX] != 1)
+                setPos(x(),y()+game->BLOCK_SIZE);
         }
         else if (getPY() < curY)
         {
             if (game->MAP[curY-1][curX] != 1)
                 setPos(x(),y()-game->BLOCK_SIZE);
-            else setPos(x(),y()+game->BLOCK_SIZE);
+            else if (game->MAP[curY+1][curX] != 1)
+                setPos(x(),y()+game->BLOCK_SIZE);
         }
     }
     if ((getPX() == curX) && (getPY() == curY))
@@ -56,27 +67,6 @@ void Enemy::move()
         setPos((ox*game->BLOCK_SIZE),((oy-1)*game->BLOCK_SIZE));
     }
 
-}
-
-void Enemy::NodeSetup()
-{
-//    for(int i = 0; i < game->MAPX; i++)
-//    {
-//        for (int j = 0; j < game->MAPY; j++)
-//        {
-//            SearchNode *node = new SearchNode();
-//            node->cX = i;
-//            node->cY = j;
-
-//            if (game->MAP[j][i] == 1)
-//            {
-//                searchNodes[j][i].
-//            } else {
-
-//            }
-
-//        }
-//    }
 }
 
 int Enemy::getPX()

@@ -33,6 +33,10 @@ Player::Player(int x, int y)
     stuck = new QMediaPlayer;
     stuck->setMedia(QUrl("qrc:/sounds/stuck.wav"));
 
+    // load stuck sound effect
+    dead = new QMediaPlayer;
+    dead->setMedia(QUrl("qrc:/sounds/death.wav"));
+
     // Set player position and texture
     setPixmap(QPixmap(":/images/player_right.png"));
     setPos((x*game->BLOCK_SIZE),((y-1)*game->BLOCK_SIZE));
@@ -125,10 +129,18 @@ void Player::move()
     int curX = pos().x()/32;
     int curY = (pos().y()+32)/32;
 
+    if (game->health->getHealth() == 0)
+    {
+        dead->play();
+        setPos(-1*game->BLOCK_SIZE,-1*game->BLOCK_SIZE);
+        scene()->removeItem(this);
+        delete this;
+    }
+
     if (dir == 1) // Up
     {
         setPixmap(QPixmap(":/images/player_up.png"));
-        if (game->MAP[curY-1][curX] != 1)
+        if ((game->MAP[curY-1][curX] != 1) && (game->MAP[curY-1][curX] != 5))
         {
             setPos(x(),y()-game->STEP_SIZE*8);
             xpos = pos().x(); // sets x-coordinate for debug overlay
@@ -139,7 +151,7 @@ void Player::move()
     else if (dir == 2) // Right
     {
         setPixmap(QPixmap(":/images/player_right.png"));
-        if (game->MAP[curY][curX+1] != 1)
+        if ((game->MAP[curY][curX+1] != 1) && (game->MAP[curY][curX+1] != 5))
         {
             setPos(x()+game->STEP_SIZE*8,y());
             xpos = pos().x();
@@ -161,7 +173,7 @@ void Player::move()
     else if (dir == 4) // Left
     {
         setPixmap(QPixmap(":/images/player_left.png"));
-        if (game->MAP[curY][curX-1] != 1)
+        if ((game->MAP[curY][curX-1] != 1) && (game->MAP[curY][curX-1] != 5))
         {
             setPos(x()-game->STEP_SIZE*8,y());
             xpos = pos().x();

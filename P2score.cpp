@@ -4,7 +4,7 @@
 P2Score::P2Score(QGraphicsItem *parent)
 {
     // display text
-    setPlainText(0);
+    setPlainText("0");
     setDefaultTextColor(Qt::gray);
     setFont(QFont("system",24));
     setPos(900,-2);

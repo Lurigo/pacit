@@ -12,7 +12,6 @@ public:
 private slots:
     void move();
 private:
-    void NodeSetup();
     int getPX();
     int getPY();
     int ox, oy;

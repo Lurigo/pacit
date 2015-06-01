@@ -17,3 +17,8 @@ void Health::decHealth()
     health--;
     setPlainText(QString("H:") + QString::number(health));
 }
+
+int Health::getHealth()
+{
+    return health;
+}

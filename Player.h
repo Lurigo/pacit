@@ -24,6 +24,7 @@ private:
     QMediaPlayer *bulletsound;
     QMediaPlayer *walking;
     QMediaPlayer *stuck;
+    QMediaPlayer *dead;
     void playWalk();
     void playStuck();
 };
