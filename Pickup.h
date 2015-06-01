@@ -12,8 +12,6 @@ public:
     Pickup(int x, int y, QGraphicsItem *parent=0);
 private slots:
     void check();
-private:
-    QMediaPlayer *collected;
 };
 
 #endif // PICKUP_H

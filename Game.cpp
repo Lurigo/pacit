@@ -14,9 +14,9 @@ Game::Game(QWidget *parent)
     setWindowTitle("PACSCII alpha");
 
     // load map
-    for (int i = 0; i < 32; i++)
+    for (int i = 0; i < MAPX; i++)
     {
-        for (int j = 0; j < 24; j++)
+        for (int j = 0; j < MAPY; j++)
         {
             if (MAP[j][i] == 1)
             {
@@ -55,6 +55,10 @@ Game::Game(QWidget *parent)
         }
     }
 
+    // load pickup sound effect
+    collected = new QMediaPlayer;
+    collected->setMedia(QUrl("qrc:/sounds/pickup.wav"));
+
     // create ammo display
     ammo = new Ammo();
     scene->addItem(ammo);
@@ -80,5 +84,15 @@ Game::Game(QWidget *parent)
     //scene->addItem(debug);
 
     show();
+}
+
+void Game::playCollect()
+{
+    if (collected->state() == QMediaPlayer::PlayingState){
+        collected->setPosition(0);
+    }
+    else if (collected->state() == QMediaPlayer::StoppedState){
+        collected->play();
+    }
 }
 
