@@ -77,7 +77,6 @@ public:
         {1,1,1,1,1,1,1,1,1,4,1,1,1,1,1,1,1,1,1,1,1,1,4,1,1,1,1,1,1,1,1,1}
         };
 
-private:
     QUdpSocket *socket;
 
 private slots:

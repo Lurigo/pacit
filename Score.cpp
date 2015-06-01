@@ -2,7 +2,7 @@
 #include "Game.h"
 #include <QFont>
 
-Game *game;
+extern Game *game;
 
 Score::Score(QGraphicsItem *parent)
 {
@@ -20,5 +20,10 @@ void Score::incScore(int n)
     score += n;
     setPlainText(QString::number(score));
     game->socket->writeDatagram(QString::number(score).toUtf8(),QHostAddress::Broadcast,7755);
+}
+
+int Score::getScore()
+{
+    return score;
 }
 

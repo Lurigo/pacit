@@ -34,8 +34,7 @@ void Bullet::move()
         if (typeid(*(colliding_items[i])) == typeid(Enemy))
         {
             // increase score
-            game->score->incScore(350);
-
+            game->score->incScore(rand() % 50 + 350);
 
             // remove item
             scene()->removeItem(colliding_items[i]);

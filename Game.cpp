@@ -117,7 +117,8 @@ void Game::receiveData()
         quint16 senderPort;
 
         socket->readDatagram(datagram.data(), datagram.size(), &sender, &senderPort);
-        score2->setPlainText(datagram);
+        if (datagram.toInt() != score->getScore())
+            score2->setPlainText(datagram);
     }
 }
 

@@ -3,10 +3,8 @@
 
 P2Score::P2Score(QGraphicsItem *parent)
 {
-    score = 0;
-
     // display text
-    setPlainText(QString::number(score));
+    setPlainText(0);
     setDefaultTextColor(Qt::gray);
     setFont(QFont("system",24));
     setPos(900,-2);

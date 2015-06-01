@@ -1,6 +1,7 @@
 #include "Pickup.h"
 #include "Game.h"
 #include "Player.h"
+#include "stdlib.h"
 #include <QTimer>
 
 extern Game *game;
@@ -22,7 +23,7 @@ void Pickup::check()
     if ((game->player->getX() == pos().x()) && (game->player->getY() == pos().y()))
     {
         game->playCollect();
-        game->score->incScore(175);
+        game->score->incScore(rand() % 25 + 175);
         scene()->removeItem(this);
         delete this;
     }
