@@ -11,6 +11,11 @@ public:
     Enemy(int x, int y, QGraphicsItem *parent=0);
 private slots:
     void move();
+private:
+    void NodeSetup();
+    int getPX();
+    int getPY();
+    int ox, oy;
 };
 
 #endif // ENEMY_H
