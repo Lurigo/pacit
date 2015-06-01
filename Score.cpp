@@ -19,7 +19,7 @@ void Score::incScore(int n)
 {
     score += n;
     setPlainText(QString::number(score));
-    game->socket->writeDatagram(QString::number(score).toUtf8(),QHostAddress::Broadcast,7755);
+    game->socket->writeDatagram(QString::number(score).toUtf8(),QHostAddress::Broadcast,8000);
 }
 
 int Score::getScore()

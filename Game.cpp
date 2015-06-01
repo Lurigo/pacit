@@ -15,7 +15,7 @@ Game::Game(QWidget *parent)
 
     // setup socket
     socket = new QUdpSocket(this);
-    socket->bind(QHostAddress::Any, 7755);
+    socket->bind(QHostAddress::Any, 8000);
     connect(socket, SIGNAL(readyRead()), this, SLOT(receiveData()));
 
     // load map
