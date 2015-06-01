@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui \
+QT       += core gui network \
             multimedia
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
@@ -30,7 +30,8 @@ SOURCES += main.cpp\
     Pickup.cpp \
     Score.cpp \
     Health.cpp \
-    Barrier.cpp
+    Barrier.cpp \
+    P2score.cpp
 
 HEADERS  += \
     Game.h \
@@ -46,7 +47,8 @@ HEADERS  += \
     Pickup.h \
     Score.h \
     Health.h \
-    Barrier.h
+    Barrier.h \
+    P2score.h
 
 FORMS    +=
 

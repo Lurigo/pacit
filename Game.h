@@ -1,6 +1,7 @@
 #ifndef GAME_H
 #define GAME_H
 
+#include <QtNetwork/QUdpSocket>
 #include <QGraphicsScene>
 #include <QGraphicsView>
 #include <QMediaPlayer>
@@ -18,9 +19,10 @@
 #include "Health.h"
 #include "Teleport.h"
 #include "Barrier.h"
+#include "P2score.h"
 
 class Game: public QGraphicsView
-{
+{   Q_OBJECT
 public:
     Game(QWidget *parent=0);
 
@@ -31,6 +33,7 @@ public:
     Ammo *ammo;
     Score *score;
     Health *health;
+    P2Score *score2;
 
     void playCollect();
 
@@ -73,6 +76,12 @@ public:
         {1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1},
         {1,1,1,1,1,1,1,1,1,4,1,1,1,1,1,1,1,1,1,1,1,1,4,1,1,1,1,1,1,1,1,1}
         };
+
+private:
+    QUdpSocket *socket;
+
+private slots:
+    void receiveData();
 
 };
 

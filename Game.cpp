@@ -13,6 +13,11 @@ Game::Game(QWidget *parent)
 
     setWindowTitle("PACSCII alpha");
 
+    // setup socket
+    socket = new QUdpSocket(this);
+    socket->bind(QHostAddress::Any, 7755);
+    connect(socket, SIGNAL(readyRead()), this, SLOT(receiveData()));
+
     // load map
     for (int i = 0; i < MAPX; i++)
     {
@@ -67,6 +72,10 @@ Game::Game(QWidget *parent)
     score = new Score();
     scene->addItem(score);
 
+    // create score display
+    score2 = new P2Score();
+    scene->addItem(score2);
+
     // create health display
     health = new Health();
     scene->addItem(health);
@@ -78,6 +87,8 @@ Game::Game(QWidget *parent)
     // create enemy entities
     Enemy *enemy1 = new Enemy(15,12);
     scene->addItem(enemy1);
+    Enemy *enemy2 = new Enemy(18,12);
+    scene->addItem(enemy2);
 
     // create debug overlay
     debug = new Debug();
@@ -93,6 +104,20 @@ void Game::playCollect()
     }
     else if (collected->state() == QMediaPlayer::StoppedState){
         collected->play();
+    }
+}
+
+void Game::receiveData()
+{
+    while (socket->hasPendingDatagrams())
+    {
+        QByteArray datagram;
+        datagram.resize(socket->pendingDatagramSize());
+        QHostAddress sender;
+        quint16 senderPort;
+
+        socket->readDatagram(datagram.data(), datagram.size(), &sender, &senderPort);
+        score2->setPlainText(datagram);
     }
 }
 
