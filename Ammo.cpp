@@ -3,7 +3,7 @@
 
 Ammo::Ammo(QGraphicsItem *parent)
 {
-    ammo = 3;
+    ammo = 0;
 
     // display text
     setPlainText(QString("A:") + QString::number(ammo));
@@ -14,7 +14,7 @@ Ammo::Ammo(QGraphicsItem *parent)
 
 void Ammo::incAmmo()
 {
-    ammo += 3;
+    ammo++;
     setPlainText(QString("A:") + QString::number(ammo));
 }
 
