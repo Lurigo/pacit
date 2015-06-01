@@ -18,7 +18,7 @@ Enemy::Enemy(int x, int y, QGraphicsItem *parent)
     QTimer *timer = new QTimer();
     connect(timer,SIGNAL(timeout()),this,SLOT(move()));
 
-    timer->start(game->PING*8); // Set timer interval and start
+    timer->start(game->PING*16); // Set timer interval and start
 }
 
 void Enemy::move()
