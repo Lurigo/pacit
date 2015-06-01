@@ -14,9 +14,9 @@ Game::Game(QWidget *parent)
     setWindowTitle("PACSCII alpha");
 
     // load map
-    for (int i = 0; i < 16; i++)
+    for (int i = 0; i < 32; i++)
     {
-        for (int j = 0; j < 14; j++)
+        for (int j = 0; j < 24; j++)
         {
             if (MAP[j][i] == 1)
             {
@@ -68,11 +68,11 @@ Game::Game(QWidget *parent)
     scene->addItem(health);
 
     // create player
-    player = new Player(8,7);
+    player = new Player(15,18);
     scene->addItem(player);
 
     // create enemy entities
-    Enemy *enemy1 = new Enemy(7,5);
+    Enemy *enemy1 = new Enemy(15,12);
     scene->addItem(enemy1);
 
     // create debug overlay

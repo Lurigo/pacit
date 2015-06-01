@@ -19,10 +19,10 @@ Teleport::Teleport(int x, int y, QGraphicsItem *parent)
     // Set destination coordinates and direction
     switch (x)
     {
-        case 3: destX = 10; destY = 0; break;
-        case 5: destX = 12; destY = 12; break;
-        case 10: destX = 3; destY = 12; break;
-        case 12: destX = 5; destY = 0; break;
+        case 9: destX = 21; destY = 0; break;
+        case 10: destX = 22; destY = 24; break;
+        case 21: destX = 9; destY = 24; break;
+        case 22: destX = 10; destY = 0; break;
     }
 
     // Connect timer to detector function
