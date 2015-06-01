@@ -2,6 +2,8 @@
 #include "Player.h"
 #include "Game.h"
 #include <QTimer>
+#include <QList>
+#include <typeinfo>
 
 extern Game *game; // External object
 
@@ -24,6 +26,26 @@ void Bullet::move()
 {
     int curX = pos().x()/32;
     int curY = (pos().y()+32)/32;
+
+    // if bullet collides, destroy bullet and enemy
+    QList<QGraphicsItem *> colliding_items = collidingItems();
+    for (int i = 0, n = colliding_items.size(); i < n; ++i)
+    {
+        if (typeid(*(colliding_items[i])) == typeid(Enemy))
+        {
+            // increase score
+            game->score->incScore(350);
+
+
+            // remove item
+            scene()->removeItem(colliding_items[i]);
+            scene()->removeItem(this);
+
+            // delete bullet
+            delete this;
+            return;
+        }
+    }
 
     if (dir == 1) // Up
     {
